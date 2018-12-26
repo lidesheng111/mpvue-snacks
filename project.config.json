@@ -10,7 +10,7 @@
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
 	"appid": "wx06153793fb38ac6b",
-	"projectname": "my-project",
+	"projectname": "mpvue-snacks",
 	"condition": {
 		"search": {
 			"current": -1,

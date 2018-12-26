@@ -1,11 +1,13 @@
 {
     "pages": [
-        "pages/home/main"
+        "pages/home/main",
+        "pages/theme/main",
+        "pages/details/main"
     ],
     "window": {
         "backgroundTextStyle":"black",
         "navigationBarBackgroundColor": "#AB956D",
-        "navigationBarTitleText": "mpvue",
+        "navigationBarTitleText": "零食商贩",
         "navigationBarTextStyle":"lightk"
     }
 }
