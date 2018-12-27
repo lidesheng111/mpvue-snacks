@@ -9,7 +9,7 @@ export default new Vuex.Store({
         banner: null,
         themes: null,
         products: null,
-        details: null,
+        details: {},
     },
 
     mutations: {
