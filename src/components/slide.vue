@@ -1,7 +1,7 @@
 <template>
   <swiper>
     <swiper-item v-for="item in banner" :key="item._id">
-      <img :src="item.itemUrl" alt="swiper" mode="widthFix">
+      <img :src="item.itemUrl" alt="swiper" mode="widthFix" @click="toDetails(item.product)">
     </swiper-item>
   </swiper>
 </template>
@@ -24,6 +24,14 @@ export default {
         store.dispatch("getBanner", res.data);
       })
       .catch(err => console.log(err));
+  },
+
+  methods: {
+    toDetails(_id) {
+      wx.navigateTo({
+        url: '../details/main?_id=' + _id,
+      })
+    }
   }
 };
 </script>

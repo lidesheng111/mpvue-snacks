@@ -10,6 +10,7 @@ export default new Vuex.Store({
         themes: null,
         products: null,
         details: {},
+        cate: [],
     },
 
     mutations: {
@@ -24,6 +25,9 @@ export default new Vuex.Store({
         },
         setDetails(state, details) {
             state.details = details;
+        },
+        setCate(state, cate) {
+            state.cate = cate;
         }
     },
 
@@ -39,6 +43,9 @@ export default new Vuex.Store({
         },
         getDetails(context, details) {
             context.commit('setDetails', details);
+        },
+        getCate(context, cate) {
+            context.commit('setCate', cate);
         }
     }
 })
