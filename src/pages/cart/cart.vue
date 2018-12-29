@@ -1,7 +1,7 @@
 <template>
     <div class="cart-container">
-        <checkbox-group class="model" v-for="item in cart" :key="item">
-            <checkbox color="red" />
+        <checkbox-group class="model" v-for="(item, index) in cart" :key="item">
+            <checkbox color="red" :checked="item.selected" @change="onToggleSelect(index)" />
 
             <img :src="item.imgUrl" mode="widthFix">
 
@@ -19,20 +19,50 @@
         </checkbox-group>
 
         <div class="footer">
-            
+            <checkbox-group :checked="allSelected" @change="onSelectAll">
+                <checkbox />全选{{allSelected}}
+            </checkbox-group>
         </div>
     </div>
 </template>
 
 <script>
+import store from '../../store/store';
 export default {
     data() {
         return {
-            cart: [
-                { name: "芹菜 半斤", price: 0.01, imgUrl: "https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/product-vg@1.png", quantity: 1},
-                { name: "芹菜 半斤", price: 0.01, imgUrl: "https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/product-vg@1.png", quantity: 1},
-                { name: "芹菜 半斤", price: 0.01, imgUrl: "https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/product-vg@1.png", quantity: 1}
-            ]
+            // allSelected: false,
+
+        }
+    },
+
+    computed: {
+        cart() {
+            return store.state.cart;
+        },
+        allSelected() {
+            return store.state.cart.filter( item => item.selected == false).length;
+        }
+    },
+
+    // watch: {
+    //     cart: function() {
+    //         return this.cart.filter( item => item.selected == false ).length 
+    //     }
+    // },
+
+    methods: {
+        onToggleSelect(index) {
+            const length = e.mp.detail.value.length;
+            store.dispatch('toggleSelect', index);
+        },
+        onSelectAll(e) {
+            const length = e.mp.detail.value.length;
+            if (length == 1) {
+                this.cart.filter( item => item.selected = true);
+            } else {
+                this.cart.filter( item => item.selected = false);
+            }
         }
     }
 }
@@ -83,6 +113,14 @@ img {
         line-height: 68rpx;
         font-size: 40rpx;
     }
+}
+
+.footer {
+    height: 100rpx;
+    width: 100%;
+    background-color: #AB956D;
+    position: fixed;
+    bottom: 0;
 }
 </style>
 

@@ -11,6 +11,11 @@ export default new Vuex.Store({
         products: null,
         details: {},
         cate: [],
+        cart: [
+            { id: 1, name: "芹菜 半斤", price: 0.01, imgUrl: "https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/product-vg@1.png", quantity: 1, selected: false},
+            { id: 2, name: "芹菜 半斤", price: 0.01, imgUrl: "https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/product-vg@1.png", quantity: 1, selected: true},
+            { id: 3, name: "芹菜 半斤", price: 0.01, imgUrl: "https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/product-vg@1.png", quantity: 1, selected: false}
+        ],
     },
 
     mutations: {
@@ -28,6 +33,9 @@ export default new Vuex.Store({
         },
         setCate(state, cate) {
             state.cate = cate;
+        },
+        toggle(state, index) {
+            state.cart[index].selected = true;
         }
     },
 
@@ -46,6 +54,9 @@ export default new Vuex.Store({
         },
         getCate(context, cate) {
             context.commit('setCate', cate);
+        },
+        toggleSelect(context, index) {
+            context.commit('toggle', index);
         }
     }
 })
